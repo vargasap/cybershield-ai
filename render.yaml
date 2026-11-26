@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: cybershield-ai
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python server.py
+    plan: free
+    autoDeploy: true
+    envVars:
+      - key: BOT_TOKEN_SHIELD
+        value: 9252483230:AAFEa8faK85k9gaaKTclm5yYqPlGmM7P3u4
+      - key: OWNER_ID
+        value: 5593082133

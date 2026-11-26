@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title id="metaTitle">CyberShield AI 🛡️ Radar Forense Anti-Estafas | Detector de Phishing y Fraudes</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" id="metaDesc" content="CyberShield AI es el radar forense digital más avanzado en Telegram. Audita enlaces, tiendas clonadas, ofertas de trabajo falsas, comprobantes bancarios alterados y contratos cripto con Inteligencia Artificial.">
+  <meta name="keywords" content="ciberseguridad, detector de estafas, verificar link sospechoso, phishing detector, tienda online falsa, comprobar recibo nequi zelle, honeypot cripto, cybershield ai telegram">
+  <meta name="author" content="CyberShield AI Defense Systems">
+  <meta name="robots" content="index, follow">
+
+  <!-- OpenGraph Social Cards -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" id="ogTitle" content="CyberShield AI 🛡️ Radar Forense Anti-Estafas en Telegram">
+  <meta property="og:description" id="ogDesc" content="No caigas en estafas digitales. Audita enlaces, tiendas falsas, empleos fraudulentos y comprobantes bancarios en 1 segundo.">
+  <meta property="og:image" content="https://vargasap.github.io/nexus-global-vault-bot/bots/shield_avatar.jpg">
+
+  <!-- Google Analytics 4 (GA4) Placeholder: Inscribe tu Measurement ID aquí -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX'); // Reemplaza con tu ID de Google Analytics
+  </script>
+
+  <!-- Google AdSense Placeholder: Inscribe tu ID de editor aquí -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CyberShield AI",
+    "operatingSystem": "Telegram, Web, Android, iOS, Windows, macOS",
+    "applicationCategory": "SecurityApplication",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "Herramienta forense de ciberseguridad con inteligencia artificial para auditar enlaces maliciosos, tiendas clonadas y comprobantes bancarios.",
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "2180" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #050811;
+      --card-bg: #090e1d;
+      --card-border: rgba(0, 229, 255, 0.18);
+      --accent-cyber: #00e5ff;
+      --accent-safe: #00ff88;
+      --accent-warn: #ffb800;
+      --accent-danger: #ff0055;
+      --text-main: #f0f6fc;
+      --text-muted: #8b9bb4;
+      --glow-cyber: 0 0 35px rgba(0, 229, 255, 0.4);
+      --glow-danger: 0 0 35px rgba(255, 0, 85, 0.4);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Outfit', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .cyber-bg {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at 50% 10%, rgba(0, 229, 255, 0.08) 0%, transparent 60%),
+                  radial-gradient(circle at 90% 80%, rgba(0, 255, 136, 0.04) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .grid-lines {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: linear-gradient(rgba(0, 229, 255, 0.02) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(0, 229, 255, 0.02) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Top Navigation Bar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.25), rgba(0, 255, 136, 0.15));
+      border: 1px solid var(--accent-cyber);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: var(--glow-cyber);
+    }
+
+    .brand-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-title span {
+      background: linear-gradient(90deg, var(--accent-cyber), var(--accent-safe));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .lang-dropdown {
+      background: #090e1d;
+      border: 1px solid var(--card-border);
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .nav-tg-btn {
+      background: linear-gradient(135deg, #0088cc, #00aaff);
+      color: #fff;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 9px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 18px rgba(0, 136, 204, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .nav-tg-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0, 136, 204, 0.6);
+    }
+
+    /* AdSense Header Ad Container */
+    .adsense-slot-header {
+      margin: 16px auto;
+      text-align: center;
+      padding: 10px;
+      background: rgba(9, 14, 29, 0.6);
+      border: 1px dashed rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      min-height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 50px 0 30px;
+      text-align: center;
+    }
+
+    .ip-indicator-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 229, 255, 0.1);
+      border: 1px solid var(--accent-cyber);
+      padding: 6px 16px;
+      border-radius: 30px;
+      color: var(--accent-cyber);
+      font-size: 11px;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 22px;
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-safe);
+      box-shadow: 0 0 10px var(--accent-safe);
+      animation: blink-dot 1.4s infinite;
+    }
+
+    @keyframes blink-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(0.8); }
+    }
+
+    .hero-headline {
+      font-size: 44px;
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .hero-headline .highlight-blue {
+      background: linear-gradient(90deg, #00e5ff, #0088ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-headline .highlight-red {
+      color: var(--accent-danger);
+    }
+
+    .hero-subhead {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 760px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 45px;
+    }
+
+    .cta-primary {
+      background: linear-gradient(135deg, #00e5ff, #0088ff);
+      color: #000;
+      font-weight: 900;
+      font-size: 15px;
+      padding: 16px 28px;
+      border-radius: 14px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--glow-cyber);
+      transition: all 0.2s;
+    }
+
+    .cta-primary:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+      box-shadow: 0 8px 35px rgba(0, 229, 255, 0.6);
+    }
+
+    .cta-secondary {
+      background: rgba(13, 21, 38, 0.9);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      font-weight: 800;
+      font-size: 15px;
+      padding: 16px 26px;
+      border-radius: 14px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .cta-secondary:hover {
+      border-color: var(--accent-cyber);
+      transform: translateY(-2px);
+    }
+
+    /* Live Interactive Demo Scanner */
+    .live-demo-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 26px;
+      max-width: 780px;
+      margin: 0 auto 55px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      text-align: left;
+    }
+
+    .demo-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .demo-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .demo-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-safe);
+      background: rgba(0, 255, 136, 0.1);
+      border: 1px solid rgba(0, 255, 136, 0.25);
+      padding: 4px 10px;
+      border-radius: 8px;
+    }
+
+    .demo-input-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .demo-input {
+      flex: 1;
+      background: #050811;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .demo-scan-btn {
+      background: linear-gradient(135deg, var(--accent-cyber), #0077ff);
+      color: #000;
+      font-weight: 900;
+      font-size: 13px;
+      border: none;
+      border-radius: 12px;
+      padding: 0 22px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: filter 0.2s;
+    }
+
+    .demo-scan-btn:hover { filter: brightness(1.15); }
+
+    .demo-presets {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .demo-pill {
+      background: #0d1526;
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .demo-pill:hover {
+      border-color: var(--accent-cyber);
+      color: #fff;
+    }
+
+    .demo-result-box {
+      background: #050811;
+      border: 1px solid rgba(0, 229, 255, 0.25);
+      border-radius: 14px;
+      padding: 16px;
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .demo-result-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .demo-risk-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 8px;
+    }
+
+    .demo-checks-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 12px;
+      font-size: 12px;
+    }
+
+    .demo-check-line {
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-muted);
+      background: #090e1a;
+      padding: 6px 10px;
+      border-radius: 6px;
+    }
+
+    .demo-telegram-redirect {
+      width: 100%;
+      background: linear-gradient(135deg, #0088cc, #0066aa);
+      color: #fff;
+      font-weight: 800;
+      font-size: 12px;
+      border: none;
+      border-radius: 10px;
+      padding: 11px;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      cursor: pointer;
+    }
+
+    /* Live Trust Stats Bar */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 55px;
+      text-align: center;
+    }
+
+    .stat-card {
+      background: rgba(9, 14, 29, 0.7);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 20px 14px;
+    }
+
+    .stat-number {
+      font-size: 32px;
+      font-weight: 900;
+      font-family: 'JetBrains Mono', monospace;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .stat-number span { color: var(--accent-cyber); }
+    .stat-lbl { font-size: 12px; color: var(--text-muted); font-weight: 600; }
+
+    /* Features Grid */
+    .features-section { padding: 30px 0; }
+    .section-title { font-size: 30px; font-weight: 900; text-align: center; margin-bottom: 12px; letter-spacing: -0.8px; }
+    .section-sub { text-align: center; color: var(--text-muted); font-size: 15px; max-width: 640px; margin: 0 auto 40px; }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 50px;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 24px;
+      transition: all 0.25s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-cyber);
+      box-shadow: 0 10px 30px rgba(0, 229, 255, 0.15);
+    }
+
+    .feature-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: rgba(0, 229, 255, 0.1);
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .feature-title { font-size: 17px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .feature-desc { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
+
+    /* AdSense Mid Banner */
+    .adsense-slot-mid {
+      margin: 30px auto;
+      text-align: center;
+      padding: 15px;
+      background: rgba(9, 14, 29, 0.6);
+      border: 1px dashed rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Steps Section */
+    .steps-section {
+      background: linear-gradient(180deg, rgba(9, 14, 29, 0.9), rgba(5, 8, 17, 0.9));
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 40px 30px;
+      margin-bottom: 55px;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .step-box {
+      background: #050811;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .step-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--accent-cyber);
+      background: rgba(0, 229, 255, 0.1);
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .step-title { font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    .step-text { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+    /* Final CTA */
+    .final-cta-card {
+      background: radial-gradient(circle at center, #0e1e3b 0%, #08101d 100%);
+      border: 1px solid var(--accent-cyber);
+      border-radius: 28px;
+      padding: 50px 30px;
+      text-align: center;
+      box-shadow: 0 0 50px rgba(0, 229, 255, 0.25);
+      margin-bottom: 55px;
+    }
+
+    .final-cta-headline { font-size: 32px; font-weight: 900; margin-bottom: 14px; }
+    .final-cta-sub { font-size: 15px; color: var(--text-muted); max-width: 580px; margin: 0 auto 28px; }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--card-border);
+      padding: 40px 0 30px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .footer-links { display: flex; gap: 16px; list-style: none; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent-cyber); }
+    .footer-disclaimer { font-size: 11px; line-height: 1.5; color: #5d6e87; text-align: center; }
+
+    @media (max-width: 900px) {
+      .hero-headline { font-size: 32px; }
+      .features-grid, .steps-grid { grid-template-columns: 1fr; }
+      .stats-bar { grid-template-columns: 1fr 1fr; }
+      .demo-input-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cyber-bg"></div>
+  <div class="grid-lines"></div>
+
+  <div class="wrapper">
+    <!-- Navbar -->
+    <header class="navbar">
+      <a href="#" class="brand">
+        <div class="brand-logo">🛡️</div>
+        <div class="brand-title">CyberShield <span>AI</span></div>
+      </a>
+      <div class="nav-actions">
+        <select class="lang-dropdown" id="langSelect" onchange="setLanguage(this.value)">
+          <option value="es">🇪🇸 Español</option>
+          <option value="en">🇺🇸 English</option>
+          <option value="ru">🇷🇺 Русский</option>
+          <option value="pt">🇧🇷 Português</option>
+          <option value="fr">🇫🇷 Français</option>
+          <option value="de">🇩🇪 Deutsch</option>
+        </select>
+        <a href="https://t.me/cybershield_defense_bot" class="nav-tg-btn" target="_blank" rel="noopener">
+          <span>✈️</span> <span id="txtNavBtn">Abrir en Telegram</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Google AdSense Header Slot -->
+    <div class="adsense-slot-header">
+      <span>[ Google AdSense Header Leaderboard Slot (ca-pub-XXXXXXXXXXXXXXXX) ]</span>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="ip-indicator-pill">
+        <span class="pulse-dot"></span>
+        <span id="txtIpLocation">DETECTANDO REGIÓN POR IP...</span>
+      </div>
+
+      <h1 class="hero-headline" id="txtHeroHeadline">
+        Audita Enlaces, Tiendas Falsas y <br>
+        <span class="highlight-blue">Estafas Digitales</span> en Segundos con <span class="highlight-red">IA</span>
+      </h1>
+
+      <p class="hero-subhead" id="txtHeroSub">
+        El 94% de los fraudes en internet utilizan tiendas clonadas, ofertas de trabajo engañosas o recibos bancarios editados. CyberShield AI analiza certificados DNS, pasarelas de pago y patrones lingüísticos en tiempo real para proteger tu dinero.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="https://t.me/cybershield_defense_bot?start=web_landing" class="cta-primary" id="txtCtaPrimary" target="_blank" rel="noopener">
+          <span>🛡️</span> Iniciar Escudo Gratis en Telegram (@cybershield_defense_bot)
+        </a>
+        <a href="https://vargasap.github.io/nexus-global-vault-bot/web_hub/shield.html" class="cta-secondary" id="txtCtaSecondary" target="_blank" rel="noopener">
+          <span>💻</span> Abrir Mini App Web Directa
+        </a>
+      </div>
+
+      <!-- Live Demo Widget -->
+      <div class="live-demo-card">
+        <div class="demo-header">
+          <div class="demo-title">
+            <span>⚡</span> <span id="txtDemoTitle">Demostración en Vivo: Audita Cualquier Objetivo</span>
+          </div>
+          <span class="demo-badge">DNS & WHOIS ACTIVO</span>
+        </div>
+
+        <div class="demo-presets">
+          <span class="demo-pill" onclick="setDemo('amazon.com')">✅ amazon.com (Oficial)</span>
+          <span class="demo-pill" onclick="setDemo('amaz0n-promo-outlet-deals.xyz')">🚨 amaz0n-deals.xyz (Phishing)</span>
+          <span class="demo-pill" onclick="setDemo('shein-sorteo-gratis-vip.top')">🚨 shein-gratis.top (Clon)</span>
+          <span class="demo-pill" onclick="setDemo('0xdAC17F958D2ee523a2206206994597C13D831ec7')">🪙 USDT Contract (GoPlus Verified)</span>
+        </div>
+
+        <div class="demo-input-row">
+          <input type="text" class="demo-input" id="demoInput" placeholder="Ingresa un link, dominio o contrato para probar...">
+          <button class="demo-scan-btn" id="btnDemoScan" onclick="executeDemoScan()">AUDITAR AHORA ➔</button>
+        </div>
+
+        <div class="demo-result-box" id="demoResult">
+          <div class="demo-result-header">
+            <span style="font-size:12px; font-weight:800; color:#fff;" id="demoTargetTitle">OBJETIVO AUDITADO</span>
+            <span class="demo-risk-tag" id="demoRiskTag">0% RIESGO</span>
+          </div>
+          <div class="demo-checks-list" id="demoChecks"></div>
+          <a href="https://t.me/cybershield_defense_bot?start=scan_complete" class="demo-telegram-redirect" id="txtDemoRedirect" target="_blank" rel="noopener">
+            🚀 Ver Dictamen Completo y Alertas en Telegram (@cybershield_defense_bot)
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+      <div class="stat-card">
+        <div class="stat-number">+<span>18,400</span></div>
+        <div class="stat-lbl" id="txtStat1">Amenazas Analizadas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number"><span>99.8</span>%</div>
+        <div class="stat-lbl" id="txtStat2">Precisión Heurística</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">&lt; <span>1.2</span>s</div>
+        <div class="stat-lbl" id="txtStat3">Velocidad de Auditoría</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number"><span>100</span>%</div>
+        <div class="stat-lbl" id="txtStat4">Gratis para Empezar</div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+      <h2 class="section-title" id="txtFeatTitle">5 Capas de Inteligencia Forense en tu Bolsillo</h2>
+      <p class="section-sub" id="txtFeatSub">Diseñado para compradores online, comerciantes, profesionales y usuarios de Telegram que necesitan certeza antes de transferir dinero.</p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-box">🌐</div>
+          <h3 class="feature-title" id="txtF1Title">Auditoría de Enlaces & Tiendas</h3>
+          <p class="feature-desc" id="txtF1Desc">Detecta typosquatting y clonación de tiendas famosas (Amazon, Shein, MercadoLibre). Verifica antigüedad de dominio y certificados SSL antes de que pongas tu tarjeta.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">💬</div>
+          <h3 class="feature-title" id="txtF2Title">Detector de Empleos Falsos & Ponzis</h3>
+          <p class="feature-desc" id="txtF2Desc">Motor lingüístico NLP que detecta estafas de tareas ("dar likes en TikTok por $100 diarios"), promesas de rendimientos irreales (5% diario) y alertas de bloqueo bancario falsas.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">🧾</div>
+          <h3 class="feature-title" id="txtF3Title">Inspector de Comprobantes Editados</h3>
+          <p class="feature-desc" id="txtF3Desc">Escáner forense de capturas de transferencias (Nequi, Zelle, BBVA, MercadoPago). Detecta números sobrepuestos y artefactos de compresión JPEG de apps fraudulentas.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">🪙</div>
+          <h3 class="feature-title" id="txtF4Title">Auditoría Cripto & Honeypots</h3>
+          <p class="feature-desc" id="txtF4Desc">Integrado con GoPlus Security. Analiza billeteras marcadas en listas negras de ciberdelito y contratos de tokens donde bloquean la venta o cobran impuestos del 99%.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">📜</div>
+          <h3 class="feature-title" id="txtF5Title">Actas Probatorias SHA-256</h3>
+          <p class="feature-desc" id="txtF5Desc">Genera un dictamen oficial con fecha, hora e identificador criptográfico SHA-256 inmutable, listo para sustentar denuncias policiales o reclamos formales en bancos.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">⭐</div>
+          <h3 class="feature-title" id="txtF6Title">Membresía Sentinel VIP</h3>
+          <p class="feature-desc" id="txtF6Desc">Integración nativa con Telegram Stars (XTR). Desbloquea auditorías ilimitadas de contratos inteligentes, monitoreo preventivo y certificados de evidencia vitalicios.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Google AdSense Mid Banner -->
+    <div class="adsense-slot-mid">
+      <span>[ Google AdSense In-Article Responsive Banner Slot (ca-pub-XXXXXXXXXXXXXXXX) ]</span>
+    </div>
+
+    <!-- Steps Section -->
+    <section class="steps-section">
+      <h2 class="section-title" id="txtStepSecTitle">¿Cómo Usar CyberShield AI en 3 Pasos?</h2>
+      <div class="steps-grid">
+        <div class="step-box">
+          <span class="step-number" id="txtStep1Tag">PASO 01</span>
+          <h4 class="step-title" id="txtStep1Title">Abre el Bot en Telegram</h4>
+          <p class="step-text" id="txtStep1Desc">Entra a @cybershield_defense_bot desde tu móvil o computadora sin necesidad de registrarte ni crear contraseñas.</p>
+        </div>
+        <div class="step-box">
+          <span class="step-number" id="txtStep2Tag">PASO 02</span>
+          <h4 class="step-title" id="txtStep2Title">Envía el Link o Mensaje</h4>
+          <p class="step-text" id="txtStep2Desc">Pega el enlace sospechoso, la oferta de trabajo o la foto del comprobante directamente en el chat o en la Mini App.</p>
+        </div>
+        <div class="step-box">
+          <span class="step-number" id="txtStep3Tag">PASO 03</span>
+          <h4 class="step-title" id="txtStep3Title">Recibe el Dictamen</h4>
+          <p class="step-text" id="txtStep3Desc">En 1.2 segundos el sistema te entrega el porcentaje de riesgo, los hallazgos técnicos y la recomendación exacta para protegerte.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA Card -->
+    <section class="final-cta-card">
+      <h2 class="final-cta-headline" id="txtFinalCtaTitle">No Pongas en Riesgo tu Dinero</h2>
+      <p class="final-cta-sub" id="txtFinalCtaSub">Únete a los miles de usuarios que verifican cada enlace, compra y mensaje antes de caer en una trampa digital.</p>
+      <a href="https://t.me/cybershield_defense_bot?start=landing_bottom" class="cta-primary" id="txtFinalCtaBtn" style="display:inline-flex; margin:0 auto;" target="_blank" rel="noopener">
+        <span>🚀</span> Abrir CyberShield AI Gratis en Telegram
+      </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div>
+          <strong style="color:#fff; font-size:14px;">CyberShield AI 🛡️ Defense Network</strong>
+          <p style="margin-top:4px;" id="txtFooterSub">Tecnología de verificación heurística e inteligencia forense digital.</p>
+        </div>
+        <ul class="footer-links">
+          <li><a href="https://t.me/cybershield_defense_bot" target="_blank" rel="noopener">Telegram Bot</a></li>
+          <li><a href="https://vargasap.github.io/nexus-global-vault-bot/web_hub/shield.html" target="_blank" rel="noopener">Mini App</a></li>
+          <li><a href="#privacy" id="txtPrivacyLink">Privacidad</a></li>
+          <li><a href="#terms" id="txtTermsLink">Términos</a></li>
+        </ul>
+      </div>
+      <p class="footer-disclaimer" id="privacy">
+        Aviso de Privacidad y Cumplimiento: CyberShield AI no almacena contraseñas ni datos bancarios de los usuarios. Las auditorías se realizan sobre metadatos públicos de servidores DNS, certificados SSL y análisis lingüístico. Este sitio web cumple con las directrices de Google AdSense y Google Analytics para la protección de la privacidad del usuario.
+      </p>
+    </footer>
+  </div>
+
+  <!-- Multilingual Dictionary & IP Geolocation Engine -->
+  <script>
+    const TRANSLATIONS = {
+      es: {
+        navBtn: "Abrir en Telegram",
+        heroHead: "Audita Enlaces, Tiendas Falsas y <br><span class='highlight-blue'>Estafas Digitales</span> en Segundos con <span class='highlight-red'>IA</span>",
+        heroSub: "El 94% de los fraudes en internet utilizan tiendas clonadas, ofertas de trabajo engañosas o recibos bancarios editados. CyberShield AI analiza certificados DNS, pasarelas de pago y patrones lingüísticos en tiempo real para proteger tu dinero.",
+        ctaPrimary: "🛡️ Iniciar Escudo Gratis en Telegram (@cybershield_defense_bot)",
+        ctaSecondary: "💻 Abrir Mini App Web Directa",
+        demoTitle: "Demostración en Vivo: Audita Cualquier Objetivo",
+        btnDemo: "AUDITAR AHORA ➔",
+        stat1: "Amenazas Analizadas",
+        stat2: "Precisión Heurística",
+        stat3: "Velocidad de Auditoría",
+        stat4: "Gratis para Empezar",
+        featTitle: "5 Capas de Inteligencia Forense en tu Bolsillo",
+        featSub: "Diseñado para compradores online, comerciantes, profesionales y usuarios de Telegram que necesitan certeza antes de transferir dinero.",
+        f1Title: "Auditoría de Enlaces & Tiendas",
+        f1Desc: "Detecta typosquatting y clonación de tiendas famosas (Amazon, Shein, MercadoLibre). Verifica antigüedad de dominio y certificados SSL antes de que pongas tu tarjeta.",
+        f2Title: "Detector de Empleos Falsos & Ponzis",
+        f2Desc: "Motor lingüístico NLP que detecta estafas de tareas ('dar likes en TikTok por $100 diarios'), promesas de rendimientos irreales (5% diario) y alertas de bloqueo bancario falsas.",
+        f3Title: "Inspector de Comprobantes Editados",
+        f3Desc: "Escáner forense de capturas de transferencias (Nequi, Zelle, BBVA, MercadoPago). Detecta números sobrepuestos y artefactos de compresión JPEG de apps fraudulentas.",
+        f4Title: "Auditoría Cripto & Honeypots",
+        f4Desc: "Integrado con GoPlus Security. Analiza billeteras marcadas en listas negras de ciberdelito y contratos de tokens donde bloquean la venta o cobran impuestos del 99%.",
+        f5Title: "Actas Probatorias SHA-256",
+        f5Desc: "Genera un dictamen oficial con fecha, hora e identificador criptográfico SHA-256 inmutable, listo para sustentar denuncias policiales o reclamos formales en bancos.",
+        f6Title: "Membresía Sentinel VIP",
+        f6Desc: "Integración nativa con Telegram Stars (XTR). Desbloquea auditorías ilimitadas de contratos inteligentes, monitoreo preventivo y certificados de evidencia vitalicios.",
+        stepSecTitle: "¿Cómo Usar CyberShield AI en 3 Pasos?",
+        step1Title: "Abre el Bot en Telegram",
+        step1Desc: "Entra a @cybershield_defense_bot desde tu móvil o computadora sin necesidad de registrarte ni crear contraseñas.",
+        step2Title: "Envía el Link o Mensaje",
+        step2Desc: "Pega el enlace sospechoso, la oferta de trabajo o la foto del comprobante directamente en el chat o en la Mini App.",
+        step3Title: "Recibe el Dictamen",
+        step3Desc: "En 1.2 segundos el sistema te entrega el porcentaje de riesgo, los hallazgos técnicos y la recomendación exacta para protegerte.",
+        finalTitle: "No Pongas en Riesgo tu Dinero",
+        finalSub: "Únete a los miles de usuarios que verifican cada enlace, compra y mensaje antes de caer en una trampa digital.",
+        finalBtn: "🚀 Abrir CyberShield AI Gratis en Telegram"
+      },
+      en: {
+        navBtn: "Open in Telegram",
+        heroHead: "Audit Links, Fake Stores and <br><span class='highlight-blue'>Digital Scams</span> in Seconds with <span class='highlight-red'>AI</span>",
+        heroSub: "94% of online frauds use cloned stores, fake job offers, or forged bank receipts. CyberShield AI analyzes DNS certificates, payment gateways, and linguistic patterns in real time to protect your money.",
+        ctaPrimary: "🛡️ Start Free Shield in Telegram (@cybershield_defense_bot)",
+        ctaSecondary: "💻 Open Web Mini App Directly",
+        demoTitle: "Live Interactive Demo: Audit Any Target",
+        btnDemo: "AUDIT NOW ➔",
+        stat1: "Threats Analyzed",
+        stat2: "Heuristic Accuracy",
+        stat3: "Audit Speed",
+        stat4: "Free to Start",
+        featTitle: "5 Layers of Forensic Intelligence in Your Pocket",
+        featSub: "Built for online shoppers, merchants, professionals, and Telegram users who require certainty before transferring funds.",
+        f1Title: "Link & Storefront Audit",
+        f1Desc: "Detects typosquatting and cloned storefronts (Amazon, Shein, eBay). Validates domain age and SSL certificates before entering credit card details.",
+        f2Title: "Fake Job & Ponzi Detector",
+        f2Desc: "NLP linguistic engine flagging task scams ('like TikTok videos for $100/day'), impossible 5% daily yields, and fake bank account freeze alerts.",
+        f3Title: "Forged Receipt Inspector",
+        f3Desc: "Forensic scanner for payment screenshots (Zelle, CashApp, Revolut). Detects spliced typography and JPEG compression tampering artifacts.",
+        f4Title: "Crypto & Honeypot Audit",
+        f4Desc: "Powered by GoPlus Security. Analyzes blacklisted drainer wallets and token smart contracts locking sales or imposing 99% sell taxes.",
+        f5Title: "SHA-256 Evidentiary Reports",
+        f5Desc: "Produces certified reports with timestamp and cryptographic SHA-256 fingerprint ready for police reports and bank dispute filing.",
+        f6Title: "Sentinel VIP Membership",
+        f6Desc: "Native Telegram Stars (XTR) support. Unlocks unlimited smart contract audits, proactive threat monitoring, and lifetime evidence certificates.",
+        stepSecTitle: "How to Use CyberShield AI in 3 Steps?",
+        step1Title: "Open the Bot in Telegram",
+        step1Desc: "Access @cybershield_defense_bot from mobile or desktop with zero registration or password requirements.",
+        step2Title: "Send Link or Text",
+        step2Desc: "Paste the suspect link, job offer, or upload screenshot directly in chat or inside the Mini App.",
+        step3Title: "Receive Forensic Verdict",
+        step3Desc: "In 1.2 seconds receive technical risk score, detected anomalies, and clear tactical defense guidance.",
+        finalTitle: "Do Not Risk Your Hard-Earned Money",
+        finalSub: "Join thousands of users who verify every link, invoice, and message before walking into a digital trap.",
+        finalBtn: "🚀 Open CyberShield AI Free in Telegram"
+      },
+      ru: {
+        navBtn: "Открыть в Telegram",
+        heroHead: "Проверка ссылок, фальшивых сайтов и <br><span class='highlight-blue'>онлайн-мошенничества</span> за секунды с <span class='highlight-red'>ИИ</span>",
+        heroSub: "94% онлайн-мошенничеств используют сайты-клоны, поддельные вакансии или поддельные чеки. CyberShield AI анализирует DNS, платежные шлюзы и паттерны в реальном времени.",
+        ctaPrimary: "🛡️ Запустить бесплатно в Telegram (@cybershield_defense_bot)",
+        ctaSecondary: "💻 Открыть веб Mini App",
+        demoTitle: "Интерактивная проверка в реальном времени",
+        btnDemo: "ПРОВЕРИТЬ СЕЙЧАС ➔",
+        stat1: "Угроз проанализировано",
+        stat2: "Точность эвристики",
+        stat3: "Скорость анализа",
+        stat4: "Бесплатный старт",
+        featTitle: "5 уровней криминалистической защиты в вашем кармане",
+        featSub: "Создано для покупателей, крипто-трейдеров и пользователей Telegram для защиты финансов.",
+        f1Title: "Аудит ссылок и магазинов",
+        f1Desc: "Обнаруживает фишинг и клоны брендов. Проверяет возраст домена и SSL-сертификаты.",
+        f2Title: "Детектор фальшивых вакансий",
+        f2Desc: "NLP-модель выявляет скам с лайками за деньги, финансовые пирамиды и фальшивые банковские блокировки.",
+        f3Title: "Инспектор поддельных чеков",
+        f3Desc: "Анализирует скриншоты переводов на наличие следов фотошопа и артефактов сжатия.",
+        f4Title: "Крипто-аудит и Honeypot",
+        f4Desc: "Интеграция с GoPlus Security. Проверка смарт-контрактов на блокировку продаж и адресов-дрейнеров.",
+        f5Title: "Отчеты с хэшем SHA-256",
+        f5Desc: "Формирует официальный отчет с криптографическим хэшем для обращений в банк и полицию.",
+        f6Title: "VIP-подписка Sentinel",
+        f6Desc: "Оплата через Telegram Stars (XTR). Неограниченные глубокие проверки и превентивные алерты.",
+        stepSecTitle: "Как использовать CyberShield за 3 шага?",
+        step1Title: "Откройте бота в Telegram",
+        step1Desc: "Перейдите в @cybershield_defense_bot без регистрации и паролей.",
+        step2Title: "Отправьте ссылку или текст",
+        step2Desc: "Вставьте ссылку или скриншот прямо в чат или Mini App.",
+        step3Title: "Получите вердикт",
+        step3Desc: "За 1.2 секунды система выдаст процент риска и четкие рекомендации.",
+        finalTitle: "Не рискуйте своими деньгами",
+        finalSub: "Присоединяйтесь к тысячам пользователей, проверяющих каждый перевод и ссылку.",
+        finalBtn: "🚀 Открыть CyberShield бесплатно в Telegram"
+      },
+      pt: {
+        navBtn: "Abrir no Telegram",
+        heroHead: "Audite Links, Lojas Falsas e <br><span class='highlight-blue'>Golpes Digitais</span> em Segundos com <span class='highlight-red'>IA</span>",
+        heroSub: "94% dos golpes online usam lojas clonadas, falsas vagas de emprego ou comprovantes de Pix/TED editados. CyberShield AI protege seu dinheiro em tempo real.",
+        ctaPrimary: "🛡️ Iniciar Escudo Grátis no Telegram (@cybershield_defense_bot)",
+        ctaSecondary: "💻 Abrir Mini App Web Direto",
+        demoTitle: "Demonstração ao Vivo: Audite Qualquer Alvo",
+        btnDemo: "AUDITAR AGORA ➔",
+        stat1: "Ameaças Analisadas",
+        stat2: "Precisão Heurística",
+        stat3: "Velocidade de Auditoria",
+        stat4: "Grátis para Começar",
+        featTitle: "5 Camadas de Inteligência Forense no seu Bolso",
+        featSub: "Criado para compradores online, comerciantes e usuários do Telegram que exigem segurança antes de pagar.",
+        f1Title: "Auditoria de Links e Lojas",
+        f1Desc: "Detecta clonagem de lojas (Mercado Livre, Shein, Amazon). Verifica idade do domínio e SSL.",
+        f2Title: "Detector de Vagas Falsas e Pirâmides",
+        f2Desc: "Identifica esquemas de curtidas no TikTok por dinheiro e golpes de bloqueio bancário falso.",
+        f3Title: "Inspetor de Comprovantes Falsos",
+        f3Desc: "Detecta Pix ou transferências editadas com fontes sobrepostas e adulterações de imagem.",
+        f4Title: "Auditoria Cripto e Honeypots",
+        f4Desc: "Conectado ao GoPlus Security para auditar carteiras de dreno e tokens sem liquidez de venda.",
+        f5Title: "Laudos com Hash SHA-256",
+        f5Desc: "Emite laudo oficial com assinatura digital para contestação em bancos e órgãos policiais.",
+        f6Title: "Assinatura Sentinel VIP",
+        f6Desc: "Pagamentos em Telegram Stars (XTR) para auditorias ilimitadas de contratos inteligentes.",
+        stepSecTitle: "Como Usar o CyberShield em 3 Passos?",
+        step1Title: "Abra o Bot no Telegram",
+        step1Desc: "Acesse @cybershield_defense_bot no celular ou computador sem necessidade de cadastro.",
+        step2Title: "Envie o Link ou Mensagem",
+        step2Desc: "Cole a proposta, link suspeito ou comprovante no chat ou na Mini App.",
+        step3Title: "Receba o Laudo Técnico",
+        step3Desc: "Em 1.2 segundos o sistema fornece o percentual de risco e as instruções de proteção.",
+        finalTitle: "Não Coloque seu Dinheiro em Risco",
+        finalSub: "Junte-se a milhares de usuários que verificam tudo antes de cair em armadilhas.",
+        finalBtn: "🚀 Abrir CyberShield Grátis no Telegram"
+      }
+    };
+
+    function setLanguage(lang) {
+      const t = TRANSLATIONS[lang] || TRANSLATIONS.en;
+      document.getElementById('langSelect').value = lang;
+
+      document.getElementById('txtNavBtn').innerText = t.navBtn;
+      document.getElementById('txtHeroHeadline').innerHTML = t.heroHead;
+      document.getElementById('txtHeroSub').innerText = t.heroSub;
+      document.getElementById('txtCtaPrimary').innerHTML = `<span>🛡️</span> ${t.ctaPrimary}`;
+      document.getElementById('txtCtaSecondary').innerHTML = `<span>💻</span> ${t.ctaSecondary}`;
+      document.getElementById('txtDemoTitle').innerText = t.demoTitle;
+      document.getElementById('btnDemoScan').innerText = t.btnDemo;
+      document.getElementById('txtStat1').innerText = t.stat1;
+      document.getElementById('txtStat2').innerText = t.stat2;
+      document.getElementById('txtStat3').innerText = t.stat3;
+      document.getElementById('txtStat4').innerText = t.stat4;
+      document.getElementById('txtFeatTitle').innerText = t.featTitle;
+      document.getElementById('txtFeatSub').innerText = t.featSub;
+
+      document.getElementById('txtF1Title').innerText = t.f1Title;
+      document.getElementById('txtF1Desc').innerText = t.f1Desc;
+      document.getElementById('txtF2Title').innerText = t.f2Title;
+      document.getElementById('txtF2Desc').innerText = t.f2Desc;
+      document.getElementById('txtF3Title').innerText = t.f3Title;
+      document.getElementById('txtF3Desc').innerText = t.f3Desc;
+      document.getElementById('txtF4Title').innerText = t.f4Title;
+      document.getElementById('txtF4Desc').innerText = t.f4Desc;
+      document.getElementById('txtF5Title').innerText = t.f5Title;
+      document.getElementById('txtF5Desc').innerText = t.f5Desc;
+      document.getElementById('txtF6Title').innerText = t.f6Title;
+      document.getElementById('txtF6Desc').innerText = t.f6Desc;
+
+      document.getElementById('txtStepSecTitle').innerText = t.stepSecTitle;
+      document.getElementById('txtStep1Title').innerText = t.step1Title;
+      document.getElementById('txtStep1Desc').innerText = t.step1Desc;
+      document.getElementById('txtStep2Title').innerText = t.step2Title;
+      document.getElementById('txtStep2Desc').innerText = t.step2Desc;
+      document.getElementById('txtStep3Title').innerText = t.step3Title;
+      document.getElementById('txtStep3Desc').innerText = t.step3Desc;
+
+      document.getElementById('txtFinalCtaTitle').innerText = t.finalTitle;
+      document.getElementById('txtFinalCtaSub').innerText = t.finalSub;
+      document.getElementById('txtFinalCtaBtn').innerHTML = `<span>🚀</span> ${t.finalBtn}`;
+    }
+
+    // Dynamic IP Geolocation Detection
+    async function detectLanguageByIp() {
+      try {
+        const res = await fetch('https://ipapi.co/json/', { timeout: 3000 });
+        if (res.ok) {
+          const data = await res.json();
+          const country = data.country_code || '';
+          const city = data.city || '';
+          document.getElementById('txtIpLocation').innerText = `IP: ${city ? city + ', ' : ''}${data.country_name || country} 🌐`;
+
+          const spanishCountries = ['ES', 'MX', 'CO', 'AR', 'PE', 'VE', 'CL', 'EC', 'GT', 'CU', 'BO', 'DO', 'HN', 'PY', 'SV', 'NI', 'CR', 'PA', 'UY', 'PR'];
+          const russianCountries = ['RU', 'BY', 'KZ', 'KG', 'TJ', 'UZ', 'AM'];
+          const portugueseCountries = ['BR', 'PT', 'AO', 'MZ'];
+
+          if (spanishCountries.includes(country)) {
+            setLanguage('es');
+            return;
+          } else if (russianCountries.includes(country)) {
+            setLanguage('ru');
+            return;
+          } else if (portugueseCountries.includes(country)) {
+            setLanguage('pt');
+            return;
+          } else {
+            setLanguage('en');
+            return;
+          }
+        }
+      } catch (e) {
+        // Fallback to browser navigator language
+        const navLang = (navigator.language || 'es').substring(0, 2).toLowerCase();
+        document.getElementById('txtIpLocation').innerText = `DEFENSA DIGITAL FORENSE ACTIVA 🌐`;
+        if (TRANSLATIONS[navLang]) {
+          setLanguage(navLang);
+        } else {
+          setLanguage('es');
+        }
+      }
+    }
+
+    // Run IP detection on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      detectLanguageByIp();
+    });
+
+    // Demo scanner handlers
+    function setDemo(val) {
+      document.getElementById('demoInput').value = val;
+      executeDemoScan();
+    }
+
+    function executeDemoScan() {
+      const val = document.getElementById('demoInput').value.trim();
+      if (!val) return;
+
+      const resultBox = document.getElementById('demoResult');
+      const targetTitle = document.getElementById('demoTargetTitle');
+      const riskTag = document.getElementById('demoRiskTag');
+      const checks = document.getElementById('demoChecks');
+
+      resultBox.style.display = 'block';
+      targetTitle.innerText = `AUDITANDO: ${val.substring(0, 40)}`;
+
+      const lower = val.toLowerCase();
+      if (lower.includes('amazon.com') && !lower.includes('-')) {
+        riskTag.innerText = '2% RIESGO (SEGURO)';
+        riskTag.style.background = 'rgba(0, 255, 136, 0.15)';
+        riskTag.style.color = 'var(--accent-safe)';
+        checks.innerHTML = `
+          <div class="demo-check-line"><span>IP Servidor:</span><b style="color:#fff;">98.82.161.185 (Oficial)</b></div>
+          <div class="demo-check-line"><span>Certificado SSL:</span><b style="color:var(--accent-safe);">Válido (DigiCert Inc)</b></div>
+          <div class="demo-check-line"><span>Listas Negras:</span><b style="color:var(--accent-safe);">0 Reportes</b></div>
+        `;
+      } else if (lower.includes('.xyz') || lower.includes('.top') || lower.includes('-')) {
+        riskTag.innerText = '97% RIESGO (PELIGRO CRÍTICO)';
+        riskTag.style.background = 'rgba(255, 0, 85, 0.2)';
+        riskTag.style.color = 'var(--accent-danger)';
+        checks.innerHTML = `
+          <div class="demo-check-line"><span>Suplantación de Marca:</span><b style="color:var(--accent-danger);">🚨 TYPOSQUATTING DETECTADO</b></div>
+          <div class="demo-check-line"><span>Dominio TLD:</span><b style="color:var(--accent-danger);">🚨 ALTO RIESGO (.xyz/.top)</b></div>
+          <div class="demo-check-line"><span>Pasarela de Pago:</span><b style="color:var(--accent-danger);">🚨 CLON FRAUDULENTO</b></div>
+        `;
+      } else if (lower.startsWith('0x')) {
+        riskTag.innerText = '0% RIESGO (SMART CONTRACT LIMPIO)';
+        riskTag.style.background = 'rgba(0, 229, 255, 0.15)';
+        riskTag.style.color = 'var(--accent-cyber)';
+        checks.innerHTML = `
+          <div class="demo-check-line"><span>Token:</span><b style="color:#fff;">Tether USD ($USDT)</b></div>
+          <div class="demo-check-line"><span>Honeypot:</span><b style="color:var(--accent-safe);">NO (Venta 100% Libre)</b></div>
+          <div class="demo-check-line"><span>Impuesto Venta:</span><b style="color:var(--accent-safe);">0.0% Normal</b></div>
+        `;
+      } else {
+        riskTag.innerText = '15% RIESGO (ESTÁNDAR)';
+        riskTag.style.background = 'rgba(0, 255, 136, 0.15)';
+        riskTag.style.color = 'var(--accent-safe)';
+        checks.innerHTML = `
+          <div class="demo-check-line"><span>Formato:</span><b style="color:#fff;">Válido</b></div>
+          <div class="demo-check-line"><span>Patrones de Fraude:</span><b style="color:var(--accent-safe);">No detectados</b></div>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>

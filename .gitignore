@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+*.log
+*.tmp
+.env
+users_shield_db.json
+sales_shield_log.json
