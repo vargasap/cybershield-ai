@@ -11,36 +11,91 @@
   <meta name="author" content="CyberShield AI Defense Systems">
   <meta name="robots" content="index, follow">
 
-  <!-- OpenGraph Social Cards -->
+  <!-- Canonical & Alternate Links -->
+  <link rel="canonical" href="https://vargasap.github.io/cybershield-ai/">
+  <link rel="alternate" hreflang="es" href="https://vargasap.github.io/cybershield-ai/">
+  <link rel="alternate" hreflang="en" href="https://vargasap.github.io/cybershield-ai/">
+  <link rel="alternate" hreflang="x-default" href="https://vargasap.github.io/cybershield-ai/">
+
+  <!-- OpenGraph & Twitter Cards Social SEO -->
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vargasap.github.io/cybershield-ai/">
   <meta property="og:title" id="ogTitle" content="CyberShield AI 🛡️ Radar Forense Anti-Estafas en Telegram">
-  <meta property="og:description" id="ogDesc" content="No caigas en estafas digitales. Audita enlaces, tiendas falsas, empleos fraudulentos y comprobantes bancarios en 1 segundo.">
+  <meta property="og:description" id="ogDesc" content="No caigas en estafas digitales. Audita enlaces, tiendas falsas, empleos fraudulentos y comprobantes bancarios en 1 segundo con IA.">
   <meta property="og:image" content="https://vargasap.github.io/cybershield-ai/avatar.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CyberShield AI 🛡️ Radar Forense Anti-Estafas">
+  <meta name="twitter:description" content="Detector de phishing, fraudes en tiendas online y comprobantes bancarios falsos en Telegram.">
+  <meta name="twitter:image" content="https://vargasap.github.io/cybershield-ai/avatar.jpg">
   <link rel="icon" type="image/jpeg" href="./avatar.jpg">
 
-  <!-- Google Analytics 4 (GA4): Measurement ID CyberShield AI -->
+  <!-- Google Analytics 4 (GA4) & Google Ads Integration -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-M4KYQCC8X5"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-M4KYQCC8X5');
+    gtag('config', 'G-M4KYQCC8X5', {
+      'send_page_view': true,
+      'cookie_flags': 'SameSite=None;Secure'
+    });
+
+    // Helper para tracking de conversiones de Google Ads y tráfico
+    function trackConversionEvent(eventName, params = {}) {
+      if (typeof gtag === 'function') {
+        gtag('event', eventName, params);
+      }
+    }
   </script>
 
-  <!-- Google AdSense Placeholder: Inscribe tu ID de editor aquí -->
+  <!-- Google AdSense Placeholder -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 
-  <!-- Schema.org JSON-LD -->
+  <!-- Schema.org JSON-LD Structured Data: SoftwareApplication & FAQPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "CyberShield AI",
-    "operatingSystem": "Telegram, Web, Android, iOS, Windows, macOS",
-    "applicationCategory": "SecurityApplication",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-    "description": "Herramienta forense de ciberseguridad con inteligencia artificial para auditar enlaces maliciosos, tiendas clonadas y comprobantes bancarios.",
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "2180" }
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "CyberShield AI",
+        "url": "https://vargasap.github.io/cybershield-ai/",
+        "operatingSystem": "Telegram, Web, Android, iOS, Windows, macOS",
+        "applicationCategory": "SecurityApplication",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "description": "Herramienta forense de ciberseguridad con inteligencia artificial para auditar enlaces maliciosos, tiendas clonadas y comprobantes bancarios.",
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "2180" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Cómo saber si una tienda online o enlace es falso o phishing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CyberShield AI analiza el nombre del dominio contra bases de datos de typosquatting, verifica la validez del certificado SSL y la reputación del servidor DNS en 1.2 segundos."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cómo funciona la detección de comprobantes bancarios falsos?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "El escáner forense de CyberShield analiza la consistencia tipográfica en los números de montos y fechas, detectando artefactos de compresión sobrepuestos generados por editores móviles."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Tiene costo usar CyberShield AI en Telegram?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CyberShield AI ofrece escaneos gratuitos preventivos para la comunidad y pases VIP Sentinel con Telegram Stars para auditorías forenses ilimitadas y emisión de dictámenes probatorios."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
 
@@ -708,7 +763,7 @@
           <option value="fr">🇫🇷 Français</option>
           <option value="de">🇩🇪 Deutsch</option>
         </select>
-        <a href="https://t.me/cybershield_defense_bot" class="nav-tg-btn" target="_blank" rel="noopener">
+        <a href="https://t.me/cybershield_defense_bot" class="nav-tg-btn" onclick="trackConversionEvent('click_telegram_bot', { source: 'navbar' })" target="_blank" rel="noopener">
           <span>✈️</span> <span id="txtNavBtn">Abrir en Telegram</span>
         </a>
       </div>
@@ -736,7 +791,7 @@
       </p>
 
       <div class="hero-cta-group">
-        <a href="https://t.me/cybershield_defense_bot?start=web_landing" class="cta-primary" id="txtCtaPrimary" target="_blank" rel="noopener">
+        <a href="https://t.me/cybershield_defense_bot?start=web_landing" class="cta-primary" id="txtCtaPrimary" onclick="trackConversionEvent('click_telegram_bot', { source: 'hero_primary' })" target="_blank" rel="noopener">
           <span>🛡️</span> Iniciar Escudo Gratis en Telegram (@cybershield_defense_bot)
         </a>
         <a href="https://vargasap.github.io/cybershield-ai/shield.html" class="cta-secondary" id="txtCtaSecondary" onclick="return handleOpenWebApp(event)" target="_blank" rel="noopener">
@@ -1170,6 +1225,7 @@
 
     let countdownInterval = null;
     function triggerLimitModal() {
+      trackConversionEvent('web_limit_reached', { trials: 3 });
       const modal = document.getElementById('limitModal');
       if (modal) modal.classList.add('open');
       
@@ -1227,6 +1283,8 @@
 
       const val = document.getElementById('demoInput').value.trim();
       if (!val) return;
+
+      trackConversionEvent('forensic_scan_run', { target_sample: val.substring(0, 30) });
 
       // Consume one trial
       const newUsed = used + 1;
